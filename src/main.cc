@@ -55,15 +55,13 @@ bool replace(std::string& str, const std::string& from, const std::string& to) {
 void nn_rule(std::ostream& buildfile, std::string out, std::string rule, std::vector<std::string> deps) {
     std::string line = fmt::format("build {}: {}", out, rule);
     for (auto dep : deps) {
-        line += " " + dep;
         if (line.length() > 80) {
             buildfile << line << " $\n";
             line = "      ";
         }
+        line += " " + dep;
     }
-    if (line.length() != 6) {
-        buildfile << line << "\n";
-    }
+    buildfile << line << "\n";
 }
 
 std::vector<std::string> glob(const std::string& pattern) {
@@ -142,7 +140,6 @@ std::vector<std::string> convert(std::ostream& buildfile, std::string rule, YAML
             }
             std::string mapped = dep.substr(0, dep.size() - cmd.in.size()) + cmd.out;
             if (mapped.starts_with("build/")) mapped = mapped.substr(6);
-            replace(mapped, "/", ".");
             mapped = "build/" + mapped;
             nn_rule(buildfile, mapped, rule, std::vector{dep});
             if (cmd.has_depfiles) {
