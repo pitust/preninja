@@ -16,8 +16,6 @@
 
 #define fs std::filesystem
 
-extern const char* lmaostr;
-
 std::string exec(std::string cmd) {
     std::array<char, 128> buffer;
     std::string result;
@@ -179,7 +177,6 @@ int main(int argc, char** argv) {
         printf("Usage: %s\n", argv[0]);
         return EXIT_FAILURE;
     }
-    // fmt::print("{}", lmaostr);
 
     fs::path preninja = fs::path("build.preninja");
 

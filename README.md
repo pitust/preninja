@@ -5,3 +5,8 @@ Build code without:
  - the stupid choices of meson
 
 Just generate the damn build files!!!
+
+## installation
+1. git clone git@git.sr.ht:~pitust/preninja && cd preninja
+2. sh build.sh
+3. ./preninja && ninja && sudo ninja install
