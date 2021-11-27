@@ -1,0 +1,30 @@
+rules:
+  map:
+    cxx:
+      in: .cc
+      out: .o
+      cmd: clang++ $in $cflags -MD -MF $depfile -o $out -c -std=c++2a
+  reduce:
+    ld: clang++ $in $ldflags -o $out
+
+env:
+  cflags: -I inc
+
+pkg-config:
+  cflags: fmt yaml-cpp
+  ldflags: fmt yaml-cpp
+
+actions:
+  ld:
+    _: build/preninja
+    cxx: src/main.cc
+    noop: $precc
+  $precc:
+    cxx: src/lmao.cc
+
+features:
+  install:
+    - build/preninja
+  clean: yes
+  reconf: reconf
+  run: ./preninja

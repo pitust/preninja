@@ -1,0 +1,1 @@
+clang++ $(find src -type f) -I inc $(pkg-config --cflags --libs fmt yaml-cpp) -o preninja -std=c++2a && ./preninja

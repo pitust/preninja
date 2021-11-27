@@ -1,0 +1,3 @@
+-I/opt/homebrew/include
+-I/opt/homebrew/Cellar/yaml-cpp/0.6.3_1/include
+-std=c++2a
