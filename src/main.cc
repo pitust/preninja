@@ -57,7 +57,7 @@ void nn_rule(std::ostream& buildfile, std::string out, std::string rule, std::ve
     for (auto dep : deps) {
         line += " " + dep;
         if (line.length() > 80) {
-            buildfile << line << "$\n";
+            buildfile << line << " $\n";
             line = "      ";
         }
     }

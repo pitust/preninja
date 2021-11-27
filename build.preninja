@@ -18,9 +18,6 @@ actions:
   ld:
     _: build/preninja
     cxx: src/main.cc
-    noop: $precc
-  $precc:
-    cxx: src/lmao.cc
 
 features:
   install:
